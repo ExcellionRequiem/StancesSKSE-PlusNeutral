@@ -11,18 +11,22 @@ public:
     inline static uint32_t high_key;
     inline static uint32_t mid_key;
     inline static uint32_t low_key;
+    inline static uint32_t neutral_key;
     inline static uint32_t mod_key_high;
     inline static uint32_t mod_key_mid;
     inline static uint32_t mod_key_low;
+    inline static uint32_t mod_key_neutral;
     inline static uint32_t cycleKey;
 
     RE::FormID HighStanceSpellFormID;
     RE::FormID MidStanceSpellFormID;
     RE::FormID LowStanceSpellFormID;
+    RE::FormID NeutralStanceSpellFormID;
 
     RE::SpellItem* HighStanceSpell;
     RE::SpellItem* MidStanceSpell;
     RE::SpellItem* LowStanceSpell;
+    RE::SpellItem* NeutralStanceSpell;
 
     static RE::FormID  ParseFormID(const std::string& str);
     inline static bool useCycle{};

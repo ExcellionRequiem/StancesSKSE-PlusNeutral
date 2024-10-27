@@ -46,6 +46,8 @@ bool EventManager::HasAnyStance()
         return true;
     else if (player->HasSpell(settings->LowStanceSpell))
         return true;
+    else if (player->HasSpell(settings->NeutralStanceSpell))
+        return true;
     else
         return false;
 }
@@ -63,6 +65,9 @@ void EventManager::RemoveSpells(RE::SpellItem* a_newStance)
     }
     if (player->HasSpell(settings->LowStanceSpell) && currentStance != settings->LowStanceSpell) {
         player->RemoveSpell(settings->LowStanceSpell);
+    }
+    if (player->HasSpell(settings->NeutralStanceSpell) && currentStance != settings->NeutralStanceSpell) {
+        player->RemoveSpell(settings->NeutralStanceSpell);
     }
 }
 

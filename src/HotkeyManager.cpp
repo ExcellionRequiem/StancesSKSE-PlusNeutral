@@ -42,6 +42,7 @@ namespace
 
             // vector with key-stance pairs for easy access in the cycle function and in the regular function
             std::vector<std::pair<CLib::KeyCombo, RE::SpellItem*>> keySpellCombo = {
+                { hotkey_neutral,  settings->NeutralStanceSpell},
                 { hotkey_low,  settings->LowStanceSpell},
                 { hotkey_mid,  settings->MidStanceSpell},
                 {hotkey_high, settings->HighStanceSpell}
