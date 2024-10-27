@@ -12,16 +12,15 @@ void Settings::LoadSettings() noexcept
     std::string high_stance_spell_ID(ini.GetValue("FormID", "HighStanceSpellFormID", ""));
     std::string mid_stance_spell_ID(ini.GetValue("FormID", "MidStanceSpellFormID", ""));
     std::string low_stance_spell_ID(ini.GetValue("FormID", "LowStanceSpellFormID", ""));
-    std::string neutral_stance_spell_ID(ini.GetValue("FormID", "NeutralStanceSpellFormID", ""));
 
-    high_key     = std::stoi(ini.GetValue("Keys", "iHighStanceKey", "257"));
-    mid_key      = std::stoi(ini.GetValue("Keys", "iMidStanceKey", "258"));
-    low_key      = std::stoi(ini.GetValue("Keys", "iLowStanceKey", "259"));
-    low_key      = std::stoi(ini.GetValue("Keys", "iNeutralStanceKey", "256"));
-    mod_key_high = std::stoi(ini.GetValue("Keys", "iModifierKeyHighStance", "260"));
-    mod_key_mid  = std::stoi(ini.GetValue("Keys", "iModifierKeyMidStance", "260"));
-    mod_key_low  = std::stoi(ini.GetValue("Keys", "iModifierKeyLowStance", "260"));
-    mod_key_low  = std::stoi(ini.GetValue("Keys", "iModifierKeyNeutralStance", "260"));
+    high_key                = std::stoi(ini.GetValue("Keys", "iHighStanceKey", "257"));
+    mid_key                 = std::stoi(ini.GetValue("Keys", "iMidStanceKey", "258"));
+    low_key                 = std::stoi(ini.GetValue("Keys", "iLowStanceKey", "259"));
+    mod_key_high            = std::stoi(ini.GetValue("Keys", "iModifierKeyHighStance", "260"));
+    mod_key_mid             = std::stoi(ini.GetValue("Keys", "iModifierKeyMidStance", "260"));
+    mod_key_low             = std::stoi(ini.GetValue("Keys", "iModifierKeyLowStance", "260"));
+    neutral_stance_key      = std::stoi(ini.GetValue("Keys", "iNeutralStanceKey", "256"));
+    neutral_stance_modifier = std::stoi(ini.GetValue("Keys", "iModifierNeutralStance", "260"));
 
     useCycle      = ini.GetBoolValue("Keys", "bUseCycling");
     debug_logging = ini.GetBoolValue("Log", "Debug");
@@ -35,9 +34,6 @@ void Settings::LoadSettings() noexcept
     }
     if (!low_stance_spell_ID.empty()) {
         LowStanceSpellFormID = ParseFormID(low_stance_spell_ID);
-    }
-    if (!neutral_stance_spell_ID.empty()) {
-        NeutralStanceSpellFormID = ParseFormID(neutral_stance_spell_ID);
     }
 
     if (debug_logging) {
@@ -79,12 +75,6 @@ void Settings::LoadForms() noexcept
         LowStanceSpell = skyrim_cast<RE::SpellItem*>(dataHandler->LookupForm(LowStanceSpellFormID, FileName));
         logger::debug("High stance spell {} loaded", LowStanceSpell->GetName());
         logger::debug("ID for it is {}", LowStanceSpell->GetFormID());
-    }
-
-    if (NeutralStanceSpellFormID) {
-        NeutralStanceSpell = skyrim_cast<RE::SpellItem*>(dataHandler->LookupForm(NeutralStanceSpellFormID, FileName));
-        logger::debug("High stance spell {} loaded", NeutralStanceSpell->GetName());
-        logger::debug("ID for it is {}", NeutralStanceSpell->GetFormID());
     }
 
     logger::info("All Forms loaded");
